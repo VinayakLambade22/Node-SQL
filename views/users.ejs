@@ -5,42 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Users</title>
     <style>
-      table,
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        margin: 0;
+      }
+      .container {
+        width: 100%;
+        max-width: 900px;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      h2 {
+        color: #343a40;
+        margin: 0;
+      }
+      .add-user-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .add-user-btn:hover {
+        background-color: #0056b3;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+      }
       th,
       td {
-        border: 1px solid black;
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+      }
+      th {
+        background-color: #007bff;
+        color: white;
+        font-weight: 600;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      tr:hover {
+        background-color: #e9ecef;
+      }
+      td form {
+        margin: 0;
+      }
+      td button {
+        width: auto;
+        padding: 6px 12px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      .edit-btn {
+        background-color: #ffc107;
+        color: #212529;
+      }
+      .edit-btn:hover {
+        background-color: #e0a800;
+      }
+      .delete-btn {
+        background-color: #dc3545;
+      }
+      .delete-btn:hover {
+        background-color: #c82333;
       }
     </style>
   </head>
   <body>
-    <form method="GET" action="/user/new">
-      <button>Add New User</button>
-    </form>
+    <div class="container">
+      <div class="header">
+        <h2>List of all users</h2>
+        <form method="GET" action="/user/new">
+          <button class="add-user-btn">Add New User</button>
+        </form>
+      </div>
 
-    <h2>List of all users</h2>
-    <table>
-      <tr>
-        <th>Id</th>
-        <th>Email</th>
-        <th>Username</th>
-      </tr>
-      <% for(user of data) { %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.email %></td>
-        <td><%= user.username %></td>
-        <td>
-          <form method="get" action="/user/<%=user.id%>/edit">
-            <button>Edit username</button>
-          </form>
-        </td>
-        <td>
-          <form method="get" action="/user/<%=user.id%>/delete">
-            <button>Delete</button>
-          </form>
-        </td>
-      </tr>
-      <% } %>
-    </table>
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>Email</th>
+          <th>Username</th>
+          <th colspan="2" style="text-align: center">Actions</th>
+        </tr>
+        <% for(user of data) { %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.username %></td>
+          <td style="width: 100px">
+            <form method="get" action="/user/<%=user.id%>/edit">
+              <button class="edit-btn">Edit</button>
+            </form>
+          </td>
+          <td style="width: 100px">
+            <form method="get" action="/user/<%=user.id%>/delete">
+              <button class="delete-btn">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
   </body>
 </html>

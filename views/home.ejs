@@ -4,13 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        text-align: center;
+        padding-top: 100px;
+        margin: 0;
+      }
+      h1 {
+        color: #0056b3;
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+      h2 {
+        color: #555;
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 40px;
+      }
+      b {
+        color: #007bff;
+        font-weight: 600;
+      }
+      button {
+        display: inline-block;
+        padding: 15px 35px;
+        border: none;
+        border-radius: 50px;
+        background-color: #28a745;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      button:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+      }
+    </style>
   </head>
   <body>
     <h1>Hi, Welcome!</h1>
     <h2>
       Become a part of our vibrant community of
-      <b style="color: red"><%= count %></b> users
+      <b><%= count %></b> users
     </h2>
-    <button>Join Today</button>
+
+    <form method="GET" action="/user">
+      <button>Join Today</button>
+    </form>
   </body>
 </html>

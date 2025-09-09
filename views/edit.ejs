@@ -4,19 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit User</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        margin: 0;
+      }
+      h3 {
+        color: #444;
+      }
+      form {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        box-sizing: border-box;
+      }
+      textarea,
+      input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-family: inherit;
+      }
+      button {
+        width: 100%;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </head>
   <body>
-    <h3>Edit your user : <%= user.email %></h3>
+    <h3>Edit your user: <%= user.email %></h3>
 
     <form method="post" action="/user/<%= user.id %>?_method=PATCH">
       <textarea name="username"><%= user.username %></textarea>
       <input
         name="password"
-        placeholder="enter your password"
+        placeholder="enter new password"
         type="password"
       />
 
-      <button>Submit</button>
+      <button>Update User</button>
     </form>
   </body>
 </html>
